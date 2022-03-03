@@ -62,7 +62,13 @@ module.exports = {
           return barValue
             ? barValue.map((item) => {
                 if (item.language.text) return item.language.text;
-                else return item.language.coding[0].display;
+                else if (
+                  item.language &&
+                  item.language.coding &&
+                  item.language.coding[0]
+                )
+                  return item.language.coding[0].display;
+                else return "---";
               })
             : "---";
         },
