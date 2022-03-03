@@ -5,7 +5,7 @@
  * @help        :: See http://links.sailsjs.org/docs/controllers
  */
 
-const { computeData } = require("./Helpers/patientDataCompute");
+const { computeData } = require("./helpers/patientDataCompute");
 const siu12Config = require("../../tasks/siu-12.json");
 
 var parser = require("@rimiti/object-hl7-parser");
