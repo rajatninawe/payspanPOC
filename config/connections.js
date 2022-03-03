@@ -42,13 +42,13 @@ module.exports.connections = {
    ***************************************************************************/
   development: {
     adapter: "sails-postgresql",
-    host: "localhost",
+    host: "database-1.cyqfl125lrac.us-east-1.rds.amazonaws.com",
     database: "end-point",
     port: 5432,
     username: "postgres",
     password: "postgres",
     // url:"postgres:postgres@localhost:5432/end-point",
-    url: "postgres://postgres:postgres@localhost:5432/end-point",
+    url: "postgres://postgres:postgres@database-1.cyqfl125lrac.us-east-1.rds.amazonaws.com:5432/end-point",
     // ssl:true
   },
 
