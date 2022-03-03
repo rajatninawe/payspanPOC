@@ -1,0 +1,117 @@
+<div style="background-color: #f5f4f8">
+  <div
+    style="
+      display: flex;
+      flex-direction: row;
+      flex-wrap: wrap;
+      justify-content: center;
+      padding: 20px;
+    "
+  >
+    <div
+      class="mb-4 card custom-box-shadow"
+      style="width: 275px; margin-right: 15px; border-radius: 5px"
+    >
+      <div class="card-body">
+        <div class="text-center">
+          <img
+            src="https://geeks-react.netlify.app/static/media/avatar-1.d2fd9642fd3628734b27.jpg"
+            alt=""
+            class="rounded-circle avatar-xl mb-3"
+            style="width: 75px"
+          />
+          <h4 class="mb-0"><%= details.displayName[0] %></h4>
+          <p class="mb-0 fs-6 text-muted">SSN: <%= details.ssn %></p>
+        </div>
+        <div class="d-flex justify-content-between border-bottom py-2 mt-4">
+          <span>ID</span><span class="text-dark"><%= details.id %></span>
+        </div>
+        <div class="d-flex justify-content-between border-bottom py-2">
+          <span>Gender</span
+          ><span class="text-dark"><%= details.gender %></span>
+        </div>
+        <div class="d-flex justify-content-between py-2">
+          <span>DOB</span><span class="text-dark"><%= details.dob %></span>
+        </div>
+      </div>
+      <div class="card-footer custom-box-footer"></div>
+    </div>
+    <div
+      class="mb-4 card custom-box-shadow"
+      style="width: 325px; border-radius: 5px"
+    >
+      <div class="card-body">
+        <div class="d-flex justify-content-between border-bottom py-2">
+          <span>MR Number</span
+          ><span class="text-dark"><%= details.MRID %></span>
+        </div>
+        <div class="d-flex justify-content-between border-bottom py-2">
+          <span>Marital Status</span
+          ><span class="text-dark"><%= details.maritalStatus %></span>
+        </div>
+        <div class="d-flex justify-content-between border-bottom py-2">
+          <span>Contact</span
+          ><span class="text-dark"><%= details.contact[0] %></span>
+        </div>
+        <div class="d-flex justify-content-between border-bottom py-2">
+            <span>Email</span
+            ><span class="text-dark"><%= details.email %></span>
+          </div>
+        
+        <div class="d-flex justify-content-between border-bottom py-2">
+          <span>Language</span
+          ><span class="text-dark"><%= details.languages %></span>
+        </div>
+        <div class="d-flex justify-content-between border-bottom py-2">
+          <span>Address</span
+          ><span class="text-dark" style="word-break: break-word;
+          margin-left: 53px;"><%= details.address %></span>
+        </div>
+        <div class="d-flex justify-content-between py-2">
+          <span>Last Updated</span
+          ><span class="text-dark" style="word-break: break-word;
+          margin-left: 40px;"><%= details.lastUpdated %></span>
+        </div>
+      </div>
+      <div class="card-footer custom-box-footer"></div>
+    </div>
+  </div>
+
+  <div style="display: flex; flex-direction: column; padding: 20px">
+    <div class="custom-flex-row">
+      <!-- /// allergies -->
+
+      <!-- /// allergies -->
+      <!-- /// PCP -->
+
+      <!-- /// PCP -->
+      <!-- /// Diagnoses -->
+
+      <!-- /// Diagnoses -->
+    </div>
+
+    <div class="custom-flex-row">
+      <!-- /// Guarantor -->
+
+      <!-- /// Guarantor -->
+      <!-- /// Insurances -->
+
+      <!-- /// Insurances -->
+      <!-- /// Contacts -->
+
+      <!-- /// Contacts -->
+    </div>
+<h4>HL7 Conversion</h2>
+    <pre> 
+        <code>
+            <%= hl7 %>
+        </code>
+    </pre>
+    <h4>FHIR Object</h2>
+    <pre>
+          <code>
+              <%- json %>
+          </code>
+      </pre>
+  </div>
+</div>

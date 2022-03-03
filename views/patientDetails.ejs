@@ -1,0 +1,388 @@
+<div style="background-color: #f5f4f8">
+  <div
+    style="
+      display: flex;
+      flex-direction: row;
+      flex-wrap: wrap;
+      justify-content: center;
+      padding: 20px;
+    "
+  >
+    <div
+      class="mb-4 card custom-box-shadow"
+      style="width: 275px; margin-right: 15px; border-radius: 5px"
+    >
+      <div class="card-body">
+        <div class="text-center">
+          <img
+            src="https://geeks-react.netlify.app/static/media/avatar-1.d2fd9642fd3628734b27.jpg"
+            alt=""
+            class="rounded-circle avatar-xl mb-3"
+            style="width: 75px"
+          />
+          <h4 class="mb-0">
+            <%= details.Demographics.LastName+" "+details.Demographics.FirstName
+            %> <%= details.Demographics.MiddleName %>
+          </h4>
+          <p class="mb-0 fs-6 text-muted">
+            SSN: <%= details.Demographics.SSN %>
+          </p>
+        </div>
+        <div class="d-flex justify-content-between border-bottom py-2 mt-4">
+          <span>Gender</span
+          ><span class="text-dark"><%= details.Demographics.Sex %></span>
+        </div>
+        <div class="d-flex justify-content-between border-bottom py-2">
+          <span>DOB</span
+          ><span class="text-dark"><%= details.Demographics.DOB %></span>
+        </div>
+        <div class="d-flex justify-content-between py-2">
+          <span>Marital Status</span
+          ><span class="text-dark"
+            ><%= details.Demographics.MaritalStatus %></span
+          >
+        </div>
+        <!-- <div class="d-flex justify-content-between pt-2">
+          <span>Courses</span><span class="text-dark">6 </span>
+        </div> -->
+      </div>
+      <div class="card-footer custom-box-footer"></div>
+    </div>
+    <div
+      class="mb-4 card custom-box-shadow"
+      style="width: 325px; border-radius: 5px"
+    >
+      <div class="card-body">
+        <% var IdentifiersLength=details.Identifiers.length %> <% for(let i =0;i
+        < IdentifiersLength; i++){ %>
+        <div class="d-flex justify-content-between border-bottom py-2">
+          <span><%= details.Identifiers[i].IDType %></span
+          ><span class="text-dark"><%= details.Identifiers[i].ID %></span>
+        </div>
+        <% } %>
+        <div class="d-flex justify-content-between border-bottom py-2">
+          <span>Nick Name</span
+          ><span class="text-dark"><%= details.Demographics.Nickname %></span>
+        </div>
+        <div class="d-flex justify-content-between border-bottom py-2">
+          <span>Phone Number</span
+          ><span class="text-dark"
+            ><%= details.Demographics.PhoneNumber.Home %></span
+          >
+        </div>
+        <div class="d-flex justify-content-between border-bottom py-2">
+          <span>Language</span
+          ><span class="text-dark"><%= details.Demographics.Language %></span>
+        </div>
+        <div class="d-flex justify-content-between py-2">
+          <% var address=details.Demographics.Address %> <% var
+          addressLine=address.StreetAddress + ", " + address.City + ", " +
+          address.County + ", " + address.State + ", " + address.Country + ", "
+          + address.ZIP%>
+          <span>Address</span><span class="text-dark"><%= addressLine %></span>
+        </div>
+      </div>
+      <div class="card-footer custom-box-footer"></div>
+    </div>
+  </div>
+  <div style="display: flex; flex-direction: column; padding: 20px">
+    <div class="custom-flex-row">
+      <!-- /// allergies -->
+      <% var allergies=details.Allergies %> <% if(allergies.length>0){ %>
+      <div
+        class="card text-white bg-dark mb-3 custom-box-shadow"
+        style="width: 250px; height: 200px"
+      >
+        <div class="card-header custom-box-header"></div>
+        <div class="card-body" style="margin-top: 10px; overflow-y: auto">
+          <h5 class="card-title" style="font-size: 20px; margin-bottom: 10px">
+            Allergies
+          </h5>
+          <div style="overflow-y: auto" class="card-text">
+            <% for(let i =0;i < allergies.length; i++){ %>
+            <div class="d-flex justify-content-between">
+              <span style="font-size: 12px"><%= allergies[i].Name %></span>
+            </div>
+            <div class="py-2">
+              <% var reactions=allergies[i].Reaction %> <% for(let j =0;j <
+              reactions.length; j++){ %>
+              <div class="d-flex justify-content-between py-1">
+                <span>--- <%= reactions[j].Name %></span><span></span>
+              </div>
+              <% } %>
+            </div>
+            <% if(i+1==allergies.length){ %>
+            <div style="border: 1px dashed #eee"></div>
+
+            <% } %> <% } %>
+          </div>
+        </div>
+        <div class="card-footer custom-box-footer"></div>
+      </div>
+      <% } %>
+      <!-- /// allergies -->
+      <!-- /// PCP -->
+      <% var pcp=details.PCP %> <% if(Object.keys(pcp).length>0){ %>
+      <div
+        class="card text-white bg-dark mb-3 custom-box-shadow"
+        style="width: 250px; height: 265px"
+      >
+        <div class="card-header custom-box-header"></div>
+        <div
+          class="card-body"
+          style="margin-top: 10px; margin-bottom: 10px; overflow-y: auto"
+        >
+          <h5 class="card-title" style="font-size: 20px; margin-bottom: 10px">
+            PCP
+          </h5>
+          <div class="text-center">
+            <img
+              src="https://geeks-react.netlify.app/static/media/avatar-5.991ead30c8a647a4c57f.jpg"
+              alt=""
+              class="rounded-circle avatar-xl mb-3"
+              style="width: 75px"
+            />
+            <h4 class="mb-0"><%= pcp.LastName+" "+pcp.FirstName %></h4>
+            <p class="mb-0 fs-6 text-muted"><%= pcp.IDType+": "+pcp.ID %></p>
+          </div>
+          <div style="overflow-y: auto" class="card-text">
+            <div class="d-flex justify-content-between border-bottom py-2">
+              <span>Phone Number</span
+              ><span><%= pcp.PhoneNumber.Office %></span>
+            </div>
+
+            <div class="d-flex justify-content-between py-2">
+              <% var addresspcp=pcp.Address %> <% var
+              addressLinepcp=addresspcp.StreetAddress + ", " + addresspcp.City +
+              ", " + addresspcp.County + ", " + addresspcp.State + ", " +
+              addresspcp.Country + ", " + addresspcp.ZIP%>
+              <span>Address</span
+              ><span style="word-break: break-word; margin-left: 15px"
+                ><%= addressLinepcp %></span
+              >
+            </div>
+          </div>
+        </div>
+        <div class="card-footer custom-box-footer"></div>
+      </div>
+      <% } %>
+      <!-- /// PCP -->
+      <!-- /// Diagnoses -->
+
+      <% var diagnoses=details.Diagnoses %> <% if(diagnoses.length>0){ %>
+      <div
+        class="card text-white bg-dark mb-3 custom-box-shadow"
+        style="width: 250px; height: 200px"
+      >
+        <div class="card-header custom-box-header"></div>
+        <div class="card-body" style="margin-top: 10px; overflow-y: auto">
+          <h5 class="card-title" style="font-size: 20px; margin-bottom: 10px">
+            Diagnoses
+          </h5>
+          <div style="overflow-y: auto" class="card-text">
+            <% for(let i =0;i < diagnoses.length; i++){ %>
+            <div class="d-flex justify-content-between">
+              <span style="font-size: 12px"
+                ><%= diagnoses[i].Name %> (<%= diagnoses[i].Code %>)</span
+              >
+            </div>
+            <% } %>
+          </div>
+        </div>
+        <div class="card-footer custom-box-footer"></div>
+      </div>
+      <% } %>
+      <!-- /// Diagnoses -->
+    </div>
+
+    <div class="custom-flex-row">
+      <!-- /// Guarantor -->
+
+      <% var guarantor=details.Guarantor %> <%
+      if(Object.keys(guarantor).length>0){ %>
+      <div
+        class="card text-white bg-dark mb-3 custom-box-shadow"
+        style="width: 250px; height: 265px"
+      >
+        <div class="card-header custom-box-header"></div>
+        <div
+          class="card-body"
+          style="margin-top: 10px; margin-bottom: 10px; overflow-y: auto"
+        >
+          <h5 class="card-title" style="font-size: 20px; margin-bottom: 10px">
+            Guarantor
+          </h5>
+          <div style="overflow-y: auto" class="card-text">
+            <div class="d-flex justify-content-between border-bottom py-2">
+              <span>Name</span
+              ><span><%= guarantor.LastName+" "+guarantor.FirstName %></span>
+            </div>
+            <div class="d-flex justify-content-between border-bottom py-2">
+              <span>Relation To Patient</span
+              ><span><%= guarantor.RelationToPatient %></span>
+            </div>
+            <div class="d-flex justify-content-between border-bottom py-2">
+              <span>Phone Number</span
+              ><span><%= guarantor.PhoneNumbers.Home %></span>
+            </div>
+
+            <div class="d-flex justify-content-between border-bottom py-2">
+              <% var addressgurantor=guarantor.Address %> <% var
+              addressLineGurantor=addressgurantor.StreetAddress + ", " +
+              addressgurantor.City + ", " + addressgurantor.County + ", " +
+              addressgurantor.State + ", " + addressgurantor.Country + ", " +
+              addressgurantor.ZIP%>
+              <span>Address</span
+              ><span style="word-break: break-word; margin-left: 15px"
+                ><%= addressLineGurantor %></span
+              >
+            </div>
+            <div class="d-flex justify-content-between py-2">
+              <span>Employer</span><span><%= guarantor.Employer.Name %></span>
+            </div>
+          </div>
+        </div>
+        <div class="card-footer custom-box-footer"></div>
+      </div>
+      <% } %>
+      <!-- /// Guarantor -->
+      <!-- /// Insurances -->
+
+      <% var insurances=details.Insurances %> <% if(insurances.length>0){ %>
+      <div
+        class="card text-white bg-dark mb-3 custom-box-shadow"
+        style="width: 250px; height: 265px"
+      >
+        <div class="card-header custom-box-header"></div>
+        <div
+          class="card-body"
+          style="margin-top: 10px; margin-bottom: 10px; overflow-y: auto"
+        >
+          <h5 class="card-title" style="font-size: 20px; margin-bottom: 10px">
+            Insurances
+          </h5>
+          <div style="overflow-y: auto" class="card-text">
+            <% for(let i =0;i < insurances.length; i++){ %>
+            <div class="d-flex justify-content-between">
+              <span style="font-size: 12px"
+                >Policy No. <%= insurances[i].PolicyNumber %> (<%=
+                insurances[i].Type %>)</span
+              >
+            </div>
+            <div class="d-flex justify-content-between">
+              <span style="font-size: 10px"
+                >Duration: <%= insurances[i].EffectiveDate+" - "+
+                insurances[i].ExpirationDate%></span
+              >
+            </div>
+            <div class="d-flex justify-content-between border-bottom py-2">
+              <span>Plan</span><span><%= insurances[i].Plan.Name %></span>
+            </div>
+            <div class="d-flex justify-content-between border-bottom py-2">
+              <span><%= insurances[i].Plan.IDType %></span
+              ><span><%= insurances[i].Plan.ID %></span>
+            </div>
+
+            <div class="d-flex justify-content-between border-bottom py-2">
+              <span>Group Number</span
+              ><span><%= insurances[i].GroupNumber %></span>
+            </div>
+            <div class="d-flex justify-content-between border-bottom py-2">
+              <span>Group Name</span><span><%= insurances[i].GroupName %></span>
+            </div>
+            <div class="d-flex justify-content-between border-bottom py-2">
+              <span>Company Name</span
+              ><span><%= insurances[i].Company.Name %></span>
+            </div>
+            <div class="d-flex justify-content-between border-bottom py-2">
+              <span>Company Contact</span
+              ><span><%= insurances[i].Company.PhoneNumber %></span>
+            </div>
+
+            <div class="d-flex justify-content-between py-2">
+              <% var companyAddIns=insurances[i].Company.Address %> <% var
+              companyAddInsLine=companyAddIns.StreetAddress + ", " +
+              companyAddIns.City + ", " + companyAddIns.County + ", " +
+              companyAddIns.State + ", " + companyAddIns.Country + ", " +
+              companyAddIns.ZIP%>
+              <span>Company Address</span
+              ><span style="word-break: break-word; margin-left: 15px"
+                ><%= companyAddInsLine %></span
+              >
+            </div>
+            <% if(i+1==insurances.length){ %>
+            <div style="border: 1px dashed #eee"></div>
+
+            <% } %> <% } %>
+          </div>
+        </div>
+        <div class="card-footer custom-box-footer"></div>
+      </div>
+
+      <% } %>
+      <!-- /// Insurances -->
+      <!-- /// Contacts -->
+      <% var contacts=details.Contacts %> <% if(contacts.length>0){ %>
+      <div
+        class="card text-white bg-dark mb-3 custom-box-shadow"
+        style="width: 250px; height: 265px"
+      >
+        <div class="card-header custom-box-header"></div>
+        <div
+          class="card-body"
+          style="margin-top: 10px; margin-bottom: 10px; overflow-y: auto"
+        >
+          <h5 class="card-title" style="font-size: 20px; margin-bottom: 10px">
+            Contacts
+          </h5>
+          <div style="overflow-y: auto" class="card-text">
+            <% for(let i =0;i < contacts.length; i++){ %>
+            <div class="d-flex justify-content-between">
+              <span style="font-size: 12px"
+                ><%= contacts[i].LastName %> <%= contacts[i].FirstName %></span
+              >
+            </div>
+            <div class="d-flex justify-content-between">
+              <span style="font-size: 10px"> <%= contacts[i].Roles %></span>
+            </div>
+            <div class="d-flex justify-content-between border-bottom py-2">
+              <span>Relation To Patient</span
+              ><span><%= contacts[i].RelationToPatient %></span>
+            </div>
+
+            <div class="d-flex justify-content-between border-bottom py-2">
+              <span>Contact</span
+              ><span><%= contacts[i].PhoneNumber.Mobile %></span>
+            </div>
+
+            <div class="d-flex justify-content-between py-2">
+              <% var contactAddIns=contacts[i].Address %> <% var
+              contactAddInsLine=contactAddIns.StreetAddress + ", " +
+              contactAddIns.City + ", " + contactAddIns.County + ", " +
+              contactAddIns.State + ", " + contactAddIns.Country + ", " +
+              contactAddIns.ZIP%>
+              <span>Address</span
+              ><span style="word-break: break-word; margin-left: 15px"
+                ><%= contactAddInsLine %></span
+              >
+            </div>
+            <% if(i+1==insurances.length){ %>
+            <div style="border: 1px dashed #eee"></div>
+
+            <% } %> <% } %>
+          </div>
+        </div>
+        <div class="card-footer custom-box-footer"></div>
+      </div>
+
+      <% } %>
+      <!-- /// Contacts -->
+    </div>
+
+    <pre>
+        <code>
+            <%- json %>
+        </code>
+    </pre>
+  </div>
+</div>

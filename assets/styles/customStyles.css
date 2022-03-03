@@ -1,0 +1,44 @@
+.custom-box-shadow {
+  box-shadow: rgba(17, 17, 26, 0.05) 0px 1px 0px,
+    rgba(17, 17, 26, 0.1) 0px 0px 8px;
+}
+
+.custom-box-header {
+  background-color: coral !important;
+  /* border-color: coral; */
+  border: 5px solid coral !important;
+  padding: 5px !important;
+  margin: -10px !important;
+  border-radius: 3px !important;
+}
+
+.custom-box-footer {
+  background-color: coral !important;
+  /* border-color: coral; */
+  border: 5px solid coral !important;
+  padding: 5px !important;
+  margin: -10px !important;
+  border-radius: 3px !important;
+  width: 75px;
+  align-self: end;
+  z-index: 1;
+}
+
+.custom-flex-row {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  padding: 20px;
+}
+::-webkit-scrollbar {
+  width: 5px;
+}
+
+::-webkit-scrollbar-track {
+  background: #e9f6e6 !important;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #bccdd4 !important;
+}
