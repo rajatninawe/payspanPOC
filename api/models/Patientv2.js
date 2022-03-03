@@ -9,6 +9,7 @@ module.exports = {
   attributes: {
     body: { type: "json" },
     headers: { type: "json" },
+    fhirType: { type: "text" },
   },
 
   /**

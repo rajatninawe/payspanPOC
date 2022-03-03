@@ -63,9 +63,11 @@ module.exports = {
       var libCOnv = json2json.default(details && details.body, template);
 
       //   console.log("libCOnv", libCOnv);
+
       var model = {
         details: libCOnv,
         json: JSONParser.prettyPrint(details && details.body),
+        fhirType: details && details.fhirType,
         hl7: getSIU12.getMessage(),
       };
 
